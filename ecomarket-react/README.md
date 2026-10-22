@@ -46,9 +46,11 @@ ecomarket-react/
 │   └── img/              # Ilustraciones SVG
 └── src/
     ├── main.jsx          # Carga Bootstrap y monta <App /> con el router
-    ├── App.jsx           # Navbar + rutas + Footer
-    ├── components/       # Piezas reutilizables (Navbar, Footer)
+    ├── index.css         # Estilos propios (se cargan después de Bootstrap)
+    ├── App.jsx           # Estado del carrito y la sesión + Header + rutas + Footer
+    ├── components/       # Piezas reutilizables (Header, Footer, EncabezadoPagina)
     ├── pages/            # Una página por ruta (Inicio)
+    ├── utils/            # Funciones de la tienda (precios, cupones, localStorage)
     └── test/             # Pruebas *.spec.jsx
 ```
 

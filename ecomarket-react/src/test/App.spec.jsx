@@ -1,6 +1,7 @@
-import { fireEvent, render, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import App from '../App.jsx';
+import { CLAVE_CARRITO, CLAVE_SESION } from '../utils/tienda';
 
 function renderEn(ruta) {
   return render(
@@ -11,6 +12,11 @@ function renderEn(ruta) {
 }
 
 describe('App', () => {
+  afterEach(() => {
+    localStorage.removeItem(CLAVE_CARRITO);
+    localStorage.removeItem(CLAVE_SESION);
+  });
+
   it('muestra la página de inicio en la ruta /', () => {
     renderEn('/');
 
@@ -24,25 +30,29 @@ describe('App', () => {
     expect(screen.getAllByRole('link', { name: 'Leer más' }).length).toBe(2);
   });
 
-  it('el navbar enlaza a las páginas del sitio', () => {
+  it('el menú enlaza a las páginas del sitio', () => {
     renderEn('/');
 
     const productos = screen.getByRole('link', { name: 'Productos' });
     expect(productos.getAttribute('href')).toBe('/productos');
   });
 
-  it('el botón hamburguesa abre el menú y un enlace lo cierra', () => {
-    const { container } = renderEn('/');
-    const boton = screen.getByRole('button', { name: 'Abrir menú' });
-    const menu = container.querySelector('#menuNav');
+  it('recupera el carrito y la sesión guardados en localStorage', () => {
+    localStorage.setItem(
+      CLAVE_CARRITO,
+      JSON.stringify([
+        { id: 'a', cantidad: 2 },
+        { id: 'b', cantidad: 1 },
+      ]),
+    );
+    localStorage.setItem(
+      CLAVE_SESION,
+      JSON.stringify({ email: 'admin@gmail.com', nombre: 'Administrador' }),
+    );
 
-    expect(menu.classList.contains('show')).toBeFalse();
+    renderEn('/');
 
-    fireEvent.click(boton);
-    expect(menu.classList.contains('show')).toBeTrue();
-    expect(boton.getAttribute('aria-expanded')).toBe('true');
-
-    fireEvent.click(screen.getByRole('link', { name: 'Blog' }));
-    expect(menu.classList.contains('show')).toBeFalse();
+    expect(screen.getByRole('link', { name: 'Carrito (3)' })).toBeTruthy();
+    expect(screen.getByText('Hola, Administrador')).toBeTruthy();
   });
 });
