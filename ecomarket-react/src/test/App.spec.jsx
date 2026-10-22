@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import App from '../App.jsx';
 
@@ -29,5 +29,20 @@ describe('App', () => {
 
     const productos = screen.getByRole('link', { name: 'Productos' });
     expect(productos.getAttribute('href')).toBe('/productos');
+  });
+
+  it('el botón hamburguesa abre el menú y un enlace lo cierra', () => {
+    const { container } = renderEn('/');
+    const boton = screen.getByRole('button', { name: 'Abrir menú' });
+    const menu = container.querySelector('#menuNav');
+
+    expect(menu.classList.contains('show')).toBeFalse();
+
+    fireEvent.click(boton);
+    expect(menu.classList.contains('show')).toBeTrue();
+    expect(boton.getAttribute('aria-expanded')).toBe('true');
+
+    fireEvent.click(screen.getByRole('link', { name: 'Blog' }));
+    expect(menu.classList.contains('show')).toBeFalse();
   });
 });
