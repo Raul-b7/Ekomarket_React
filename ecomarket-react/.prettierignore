@@ -1,3 +1,4 @@
-dist/
-coverage/
-public/
+coverage
+dist
+public
+package-lock.json
