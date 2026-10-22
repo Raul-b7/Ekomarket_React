@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300">
+  <rect width="400" height="300" fill="#e8f5e9"/>
+  <rect x="1" y="1" width="398" height="298" fill="none" stroke="#66bb6a" stroke-width="2"/>
+  <text x="50%" y="48%" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="#2e7d32">Imagen pendiente</text>
+  <text x="50%" y="58%" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#4caf50">eco-productos2</text>
+</svg>
