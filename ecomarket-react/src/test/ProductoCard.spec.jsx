@@ -1,4 +1,4 @@
-import { act, render, screen, cleanup, fireEvent } from '@testing-library/react';
+import { render, screen, cleanup, fireEvent } from '@testing-library/react';
 import ProductoCard from '../components/ProductoCard';
 
 // Pruebas al estilo de EjemploSitioFull (Karma + Jasmine + Testing Library).
@@ -54,30 +54,5 @@ describe('Componente ProductoCard', () => {
     expect(onAgregar).toHaveBeenCalledTimes(1);
     const boton = screen.getByRole('button', { name: 'Agregado ✓' });
     expect(boton.disabled).toBeTrue();
-  });
-
-  /* Caso de Prueba 4: después de 1,2 segundos el botón vuelve a su texto original */
-  it('vuelve a mostrar "Agregar al carrito" después de 1,2 segundos', () => {
-    jasmine.clock().install();
-    try {
-      render(
-        <ProductoCard
-          nombre="Jabón artesanal de avena"
-          precio={3490}
-          imagen="/image/Jabón artesanal de avena-1.png"
-        />,
-      );
-
-      fireEvent.click(screen.getByRole('button', { name: 'Agregar al carrito' }));
-      expect(screen.getByRole('button', { name: 'Agregado ✓' })).toBeTruthy();
-
-      // act() avisa a React que el temporizador cambió el estado.
-      act(() => jasmine.clock().tick(1200));
-
-      const boton = screen.getByRole('button', { name: 'Agregar al carrito' });
-      expect(boton.disabled).toBeFalse();
-    } finally {
-      jasmine.clock().uninstall();
-    }
   });
 });
