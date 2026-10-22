@@ -1,0 +1,11 @@
+/*
+ * Estilos propios de EcoMarket.
+ *
+ * El proyecto original no tenía archivo CSS propio: todo el diseño viene de
+ * Bootstrap (colores "success", tarjetas, grilla). Por eso este archivo queda
+ * casi vacío y la apariencia se mantiene igual que antes.
+ *
+ * Las clases propias del original (header, logo, eco, eco-1, eco-2, btn-1,
+ * btn-2, footer...) se conservaron en el JSX, así que puedes darles estilo aquí
+ * cuando quieras personalizar el sitio.
+ */
