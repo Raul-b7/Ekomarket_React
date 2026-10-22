@@ -1,0 +1,32 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": ["eslint", "react", "jsx-a11y", "import", "oxc", "unicorn"],
+  "env": {
+    "browser": true,
+    "es2024": true
+  },
+  "categories": {
+    "correctness": "error",
+    "suspicious": "warn"
+  },
+  "rules": {
+    "react/react-in-jsx-scope": "off",
+    "react/jsx-key": "error",
+    "react/rules-of-hooks": "error",
+    "react/exhaustive-deps": "warn",
+    "react/only-export-components": ["warn", { "allowConstantExport": true }],
+    "no-unused-vars": "warn",
+    "import/no-unassigned-import": ["warn", { "allow": ["**/*.css", "bootstrap/**"] }]
+  },
+  "overrides": [
+    {
+      "files": ["**/*.spec.jsx", "**/*.spec.js"],
+      "env": { "jasmine": true }
+    },
+    {
+      "files": ["karma.conf.cjs", "vite.config.js"],
+      "env": { "node": true }
+    }
+  ],
+  "ignorePatterns": ["dist", "coverage", "node_modules", "public"]
+}
