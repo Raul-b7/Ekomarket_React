@@ -1,0 +1,66 @@
+[
+  {
+    "id": "articulo-productos-ecologicos",
+    "titulo": "¿Qué son los productos ecológicos y por qué elegirlos?",
+    "resumen": "Una introducción clara a qué hace que un producto sea realmente ecológico y qué beneficios trae elegirlo frente a las alternativas convencionales.",
+    "imagen": "/image/banner-ecomarket-1.png",
+    "alt": "Selección de productos ecológicos de EcoMarket",
+    "esProducto": false
+  },
+  {
+    "id": "articulo-reducir-residuos",
+    "titulo": "10 formas sencillas de reducir los residuos en casa",
+    "resumen": "Cambios simples y aplicables desde hoy para disminuir la cantidad de basura que genera tu hogar, sin grandes esfuerzos ni gastos.",
+    "imagen": "/image/eco sustentable -1.png",
+    "alt": "Productos para reducir residuos en el hogar",
+    "esProducto": false
+  },
+  {
+    "id": "articulo-guia-reutilizables",
+    "titulo": "Guía para elegir productos reutilizables",
+    "resumen": "Qué materiales buscar y qué preguntas hacerte antes de comprar una alternativa reutilizable para que realmente valga la pena.",
+    "imagen": "/image/Bolsas reutilizables (set x3).png",
+    "alt": "Bolsas reutilizables como ejemplo de producto sostenible",
+    "esProducto": true
+  },
+  {
+    "id": "articulo-desechables-vs-reutilizables",
+    "titulo": "Productos desechables vs. reutilizables: ¿cuál elegir?",
+    "resumen": "Ventajas, desventajas y ejemplos cotidianos para entender cuándo conviene cada opción según tu rutina.",
+    "imagen": "/image/EcoCuidado Personal-1.png",
+    "alt": "Comparación entre productos desechables y reutilizables de cuidado personal",
+    "esProducto": false
+  },
+  {
+    "id": "articulo-cuidado-reutilizables",
+    "titulo": "Cómo cuidar correctamente tus productos reutilizables",
+    "resumen": "Consejos de limpieza, secado y almacenamiento para que tus productos reutilizables duren mucho más tiempo.",
+    "imagen": "/image/Cepillo de fibra natural-1.png",
+    "alt": "Cepillo de fibra natural, un producto reutilizable que requiere cuidados",
+    "esProducto": true
+  },
+  {
+    "id": "articulo-habitos-sostenibles",
+    "titulo": "Hábitos sostenibles que puedes incorporar a tu vida diaria",
+    "resumen": "Pequeñas rutinas de consumo responsable que, sumadas en el tiempo, generan un impacto real en el cuidado del medio ambiente.",
+    "imagen": "/image/EcoAlimentos Orgánicos-1.png",
+    "alt": "Alimentos orgánicos como parte de hábitos sostenibles diarios",
+    "esProducto": false
+  },
+  {
+    "id": "articulo-reducir-plastico",
+    "titulo": "5 formas de reducir el plástico en tu rutina diaria",
+    "resumen": "Cambios prácticos y fáciles de mantener para disminuir el plástico de un solo uso en tus actividades de todos los días.",
+    "imagen": "/image/banner-cero-plastico-1.png",
+    "alt": "Alternativas para reducir el uso de plástico en la rutina diaria",
+    "esProducto": false
+  },
+  {
+    "id": "articulo-cruelty-free",
+    "titulo": "¿Qué significa realmente el sello Cruelty-Free?",
+    "resumen": "Qué garantiza esta certificación, qué no cubre y cómo identificarla correctamente al momento de comprar.",
+    "imagen": "/image/Jabón artesanal de avena-1.png",
+    "alt": "Jabón artesanal como ejemplo de producto cruelty-free",
+    "esProducto": true
+  }
+]
