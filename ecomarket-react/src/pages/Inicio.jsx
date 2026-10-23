@@ -1,77 +1,61 @@
+/** Página de inicio (antes index.html). */
 import { Link } from 'react-router-dom';
+import CategoriaDestacada from '../components/CategoriaDestacada';
 
-// Cada categoría se muestra igual; "invertida" pone las imágenes a la izquierda.
+// Los 3 bloques de categoría como datos: así se dibujan con un solo componente.
 const categorias = [
   {
     nombre: 'Hogar Sustentable',
     descripcion:
       'Artículos de limpieza y utensilios domésticos pensados para reducir el impacto ambiental sin perder efectividad.',
-    enlace: '/productos#hogar-sustentable',
+    ancla: 'hogar-sustentable',
     imagenes: [
       {
-        src: '/image/eco%20sustentable%20-1.png',
+        src: '/image/eco sustentable -1.png',
         alt: 'Productos para un hogar sustentable',
       },
-      {
-        src: '/image/eco%20sustentable%20-2.png',
-        alt: 'Productos ecológicos para el hogar',
-      },
+      { src: '/image/eco sustentable -2.png', alt: 'Productos ecológicos para el hogar' },
     ],
   },
   {
     nombre: 'Cuidado Personal',
     descripcion:
       'Cosmética natural y accesorios de higiene elaborados con ingredientes libres de químicos agresivos.',
-    enlace: '/productos#cuidado-personal',
-    invertida: true,
+    ancla: 'cuidado-personal',
     imagenes: [
       {
-        src: '/image/EcoCuidado%20Personal-1.png',
+        src: '/image/EcoCuidado Personal-1.png',
         alt: 'Productos ecológicos de cuidado personal',
       },
       {
-        src: '/image/EcoCuidado%20Personal-2.png',
+        src: '/image/EcoCuidado Personal-2.png',
         alt: 'Productos sustentables de cuidado personal',
       },
     ],
+    invertido: true,
   },
   {
     nombre: 'Alimentos Orgánicos',
     descripcion:
       'Productos cultivados de forma responsable, libres de pesticidas y con envases de bajo impacto ambiental.',
-    enlace: '/productos#alimentos-organicos',
+    ancla: 'alimentos-organicos',
     imagenes: [
       {
-        src: '/image/EcoAlimentos%20Org%C3%A1nicos-1.png',
+        src: '/image/EcoAlimentos Orgánicos-1.png',
         alt: 'Alimentos orgánicos de EcoMarket',
       },
       {
-        src: '/image/EcoAlimentos%20Org%C3%A1nicos-2.png',
+        src: '/image/EcoAlimentos Orgánicos-2.png',
         alt: 'Productos y alimentos orgánicos',
       },
     ],
   },
 ];
 
-const articulos = [
-  {
-    titulo: '5 formas de reducir el plástico en tu rutina diaria',
-    resumen:
-      'Pequeños cambios como usar bolsas reutilizables, elegir envases a granel y evitar botellas desechables ayudan a disminuir el plástico que consumes cada día.',
-    enlace: '/blog#articulo-reducir-residuos',
-  },
-  {
-    titulo: '¿Qué significa realmente el sello Cruelty-Free?',
-    resumen:
-      'Un producto Cruelty-Free es aquel que no fue testeado en animales en ninguna etapa de su elaboración, una forma sencilla de elegir de manera más responsable.',
-    enlace: '/blog#articulo-productos-ecologicos',
-  },
-];
-
 export default function Inicio() {
   return (
-    <>
-      <header className="header-content container text-center py-5">
+    <main>
+      <div className="header-content container text-center py-5">
         <div className="header-banner ratio ratio-21x9 rounded shadow-sm mb-4">
           <img
             src="/image/banner-cero-plastico-1.png"
@@ -89,36 +73,11 @@ export default function Inicio() {
             </Link>
           </div>
         </div>
-      </header>
+      </div>
 
+      {/* El spread {...categoria} pasa cada propiedad del objeto como una prop. */}
       {categorias.map((categoria) => (
-        <section key={categoria.nombre} className="eco productos container py-5">
-          <div className="row align-items-center g-4">
-            <div className={`eco-1 col-md-6 ${categoria.invertida ? 'order-md-2' : ''}`}>
-              <h2>
-                <span>Eco</span>
-                {categoria.nombre}
-              </h2>
-              <p>{categoria.descripcion}</p>
-              <Link to={categoria.enlace} className="btn-2 btn btn-outline-success">
-                Ver Productos
-              </Link>
-            </div>
-
-            <div
-              className={`eco-2 col-md-6 d-flex flex-wrap gap-3 ${categoria.invertida ? 'order-md-1' : ''}`}
-            >
-              {categoria.imagenes.map((imagen, i) => (
-                <img
-                  key={imagen.src}
-                  className={`img-${i + 1} img-fluid rounded shadow-sm`}
-                  src={imagen.src}
-                  alt={imagen.alt}
-                />
-              ))}
-            </div>
-          </div>
-        </section>
+        <CategoriaDestacada key={categoria.ancla} {...categoria} />
       ))}
 
       <section id="blog" className="eco blog container py-5">
@@ -127,19 +86,49 @@ export default function Inicio() {
         </h2>
 
         <div className="row g-4">
-          {articulos.map((articulo) => (
-            <div key={articulo.titulo} className="col-md-6">
-              <div className="card h-100 shadow-sm">
-                <div className="card-body">
-                  <h3 className="card-title h5">{articulo.titulo}</h3>
-                  <p className="card-text">{articulo.resumen}</p>
-                  <Link to={articulo.enlace} className="btn btn-outline-success">
-                    Leer más
-                  </Link>
-                </div>
+          <div className="col-md-6">
+            <div className="card h-100 shadow-sm">
+              <div className="card-body">
+                <h3 className="card-title h5">
+                  5 formas de reducir el plástico en tu rutina diaria
+                </h3>
+                <p className="card-text">
+                  Pequeños cambios como usar bolsas reutilizables, elegir envases a granel
+                  y evitar botellas desechables ayudan a disminuir el plástico que
+                  consumes cada día.
+                </p>
+                {/* Corregido: en el original este enlace llevaba al artículo de residuos. */}
+                <Link
+                  to="/blog#articulo-reducir-plastico"
+                  className="btn btn-outline-success"
+                >
+                  Leer más
+                </Link>
               </div>
             </div>
-          ))}
+          </div>
+
+          <div className="col-md-6">
+            <div className="card h-100 shadow-sm">
+              <div className="card-body">
+                <h3 className="card-title h5">
+                  ¿Qué significa realmente el sello Cruelty-Free?
+                </h3>
+                <p className="card-text">
+                  Un producto Cruelty-Free es aquel que no fue testeado en animales en
+                  ninguna etapa de su elaboración, una forma sencilla de elegir de manera
+                  más responsable.
+                </p>
+                {/* Corregido: en el original llevaba al artículo de productos ecológicos. */}
+                <Link
+                  to="/blog#articulo-cruelty-free"
+                  className="btn btn-outline-success"
+                >
+                  Leer más
+                </Link>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div className="text-center mt-4">
@@ -148,6 +137,6 @@ export default function Inicio() {
           </Link>
         </div>
       </section>
-    </>
+    </main>
   );
 }
