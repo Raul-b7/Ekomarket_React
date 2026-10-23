@@ -1,0 +1,56 @@
+[
+  {
+    "id": "cepillo-de-fibra-natural",
+    "categoria": "hogar-sustentable",
+    "nombre": "Cepillo de fibra natural",
+    "descripcion": "Cepillo de limpieza elaborado con fibras vegetales y mango de madera certificada.",
+    "precio": 3990,
+    "imagen": "/image/Cepillo de fibra natural-1.png",
+    "alt": "Cepillo de fibra natural"
+  },
+  {
+    "id": "bolsas-reutilizables-set-x3",
+    "categoria": "hogar-sustentable",
+    "nombre": "Bolsas reutilizables (set x3)",
+    "descripcion": "Bolsas de malla para compras a granel, lavables y resistentes, ideales para frutas y verduras.",
+    "precio": 5990,
+    "imagen": "/image/Bolsas reutilizables (set x3).png",
+    "alt": "Set de bolsas reutilizables de malla"
+  },
+  {
+    "id": "shampoo-solido-natural",
+    "categoria": "cuidado-personal",
+    "nombre": "Shampoo sólido natural",
+    "descripcion": "Barra de shampoo libre de sulfatos, formulada con ingredientes de origen natural.",
+    "precio": 6990,
+    "imagen": "/image/Shampoo sólido natural-1.png",
+    "alt": "Shampoo sólido natural"
+  },
+  {
+    "id": "jabon-artesanal-de-avena",
+    "categoria": "cuidado-personal",
+    "nombre": "Jabón artesanal de avena",
+    "descripcion": "Jabón elaborado de forma artesanal con avena y aceites vegetales, apto para piel sensible.",
+    "precio": 3490,
+    "imagen": "/image/Jabón artesanal de avena-1.png",
+    "alt": "Jabón artesanal de avena"
+  },
+  {
+    "id": "miel-organica-500g",
+    "categoria": "alimentos-organicos",
+    "nombre": "Miel orgánica 500g",
+    "descripcion": "Miel pura de apicultura orgánica, sin aditivos ni procesos industriales.",
+    "precio": 7990,
+    "imagen": "/image/Miel orgánica 500g-1.png",
+    "alt": "Miel orgánica"
+  },
+  {
+    "id": "quinoa-organica-500g",
+    "categoria": "alimentos-organicos",
+    "nombre": "Quinoa orgánica 500g",
+    "descripcion": "Quinoa cultivada sin pesticidas, envasada en empaques de bajo impacto ambiental.",
+    "precio": 4990,
+    "imagen": "/image/Quinoa orgánica 500g-1.png",
+    "alt": "Quinoa orgánica"
+  }
+]
