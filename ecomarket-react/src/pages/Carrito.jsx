@@ -5,6 +5,7 @@
  *   carrito            -> lista de productos guardados (estado de App)
  *   onCambiarCantidad  -> suma o resta unidades
  *   onEliminar         -> quita un producto
+ *   onVaciar           -> vacía todo el carrito (al cerrar la compra simulada)
  */
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
@@ -12,11 +13,13 @@ import EncabezadoPagina from '../components/EncabezadoPagina';
 import ItemCarrito from '../components/ItemCarrito';
 import { COSTO_ENVIO, CUPONES, formatearPrecio } from '../utils/tienda';
 
-export default function Carrito({ carrito, onCambiarCantidad, onEliminar }) {
+export default function Carrito({ carrito, onCambiarCantidad, onEliminar, onVaciar }) {
   // Estado local de esta página: el texto del cupón y el cupón aplicado.
   const [codigo, setCodigo] = useState('');
   const [cuponActivo, setCuponActivo] = useState(null);
   const [mensaje, setMensaje] = useState({ texto: '', esError: false });
+  // true = se muestra la ventana "Esto es una simulación".
+  const [simulacion, setSimulacion] = useState(false);
 
   const vacio = carrito.length === 0;
 
@@ -145,15 +148,15 @@ export default function Carrito({ carrito, onCambiarCantidad, onEliminar }) {
                   </p>
                 </form>
 
-                {/* Igual que el original, "Proceder al pago" todavía no lleva a ninguna parte. */}
-                <a
-                  href="#"
-                  className={`btn btn-success w-100 mb-2 ${vacio ? 'disabled' : ''}`}
-                  aria-disabled={vacio}
-                  onClick={(evento) => evento.preventDefault()}
+                {/* "Proceder al pago" solo abre la ventana de simulación. */}
+                <button
+                  type="button"
+                  className="btn btn-success w-100 mb-2"
+                  disabled={vacio}
+                  onClick={() => setSimulacion(true)}
                 >
                   Proceder al pago
-                </a>
+                </button>
                 <Link to="/productos" className="btn btn-outline-success w-100">
                   Seguir comprando
                 </Link>
@@ -162,6 +165,36 @@ export default function Carrito({ carrito, onCambiarCantidad, onEliminar }) {
           </div>
         </div>
       </section>
+
+      {/* Ventana de simulación: se dibuja solo cuando "simulacion" es true. */}
+      {simulacion && (
+        <>
+          <div
+            className="modal d-block"
+            tabIndex={-1}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="titulo-simulacion"
+          >
+            <div className="modal-dialog modal-dialog-centered">
+              <div className="modal-content text-center">
+                <div className="modal-body p-4">
+                  <h2 id="titulo-simulacion" className="h4 text-success">
+                    ¡Esto es una simulación!
+                  </h2>
+                  <p className="mb-3">¡Gracias por comprar con nosotros!</p>
+                  {/* Única salida: vacía el carrito y vuelve a la tienda. */}
+                  <Link to="/productos" className="btn btn-success" onClick={onVaciar}>
+                    Volver a los productos
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+          {/* Fondo oscuro detrás de la ventana. */}
+          <div className="modal-backdrop show"></div>
+        </>
+      )}
     </main>
   );
 }

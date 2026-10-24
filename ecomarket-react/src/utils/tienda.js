@@ -8,6 +8,7 @@
 
 export const CLAVE_CARRITO = 'ecomarket-carrito';
 export const CLAVE_SESION = 'ecomarket-sesion';
+export const CLAVE_TEMA = 'ecomarket-tema';
 
 // Costo de envío del pedido, en pesos.
 export const COSTO_ENVIO = 2990;
