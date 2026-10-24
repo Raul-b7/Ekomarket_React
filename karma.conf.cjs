@@ -12,6 +12,11 @@ module.exports = function (config) {
       module: {
         rules: [
           {
+            // "type": "module" hace que webpack exija la extensión en imports de .js
+            test: /\.js$/,
+            resolve: { fullySpecified: false },
+          },
+          {
             test: /\.jsx?$/,
             exclude: /node_modules/,
             use: {
