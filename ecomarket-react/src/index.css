@@ -9,3 +9,18 @@
  * btn-2, footer...) se conservaron en el JSX, así que puedes darles estilo aquí
  * cuando quieras personalizar el sitio.
  */
+
+/* Modo oscuro: Bootstrap ya oscurece fondos y textos; aquí se conserva el verde eco. */
+[data-bs-theme='dark'] {
+  --bs-success: #198754;
+  --bs-link-color: #75b798;
+  --bs-link-hover-color: #a3cfbb;
+}
+
+[data-bs-theme='dark'] .btn-outline-success {
+  --bs-btn-color: #75b798;
+  --bs-btn-border-color: #198754;
+  --bs-btn-hover-bg: #198754;
+  --bs-btn-hover-border-color: #198754;
+  --bs-btn-hover-color: #fff;
+}

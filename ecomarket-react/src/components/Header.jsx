@@ -5,11 +5,19 @@
  *   unidades        -> número que muestra el botón "Carrito (n)"
  *   sesion          -> { email, nombre } de quien inició sesión, o null
  *   onCerrarSesion  -> función de App que borra la sesión
+ *   oscuro          -> true si el modo oscuro está activo
+ *   onAlternarTema  -> función de App que cambia entre modo claro y oscuro
  */
 import { useState } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 
-export default function Header({ unidades, sesion, onCerrarSesion }) {
+export default function Header({
+  unidades,
+  sesion,
+  onCerrarSesion,
+  oscuro = false,
+  onAlternarTema,
+}) {
   // Igual que en EjemploSitioFull: el menú móvil se abre/cierra con estado de React,
   // en vez de usar el JavaScript de Bootstrap (data-bs-toggle).
   const [abierto, setAbierto] = useState(false);
@@ -34,6 +42,18 @@ export default function Header({ unidades, sesion, onCerrarSesion }) {
           <Link to="/" className="logo navbar-brand fw-bold">
             EcoMarket
           </Link>
+
+          {/* Fuera del menú, al lado: en móvil queda junto a la hamburguesa y en
+              escritorio (order-lg-last) al final de la barra. */}
+          <button
+            type="button"
+            className="btn btn-outline-success ms-auto me-2 ms-lg-3 me-lg-0 order-lg-last"
+            aria-label={oscuro ? 'Activar modo claro' : 'Activar modo oscuro'}
+            aria-pressed={oscuro}
+            onClick={onAlternarTema}
+          >
+            {oscuro ? '☀️' : '🌙'}
+          </button>
 
           <button
             className="navbar-toggler"

@@ -16,7 +16,13 @@ import Blog from './pages/Blog';
 import Contacto from './pages/Contacto';
 import Login from './pages/Login';
 import Carrito from './pages/Carrito';
-import { CLAVE_CARRITO, CLAVE_SESION, guardar, leerGuardado } from './utils/tienda';
+import {
+  CLAVE_CARRITO,
+  CLAVE_SESION,
+  CLAVE_TEMA,
+  guardar,
+  leerGuardado,
+} from './utils/tienda';
 
 export default function App() {
   // El valor inicial se lee de localStorage, así el carrito sobrevive a una recarga.
@@ -32,6 +38,13 @@ export default function App() {
   // useEffect: cada vez que cambia el carrito o la sesión, se guarda en localStorage.
   useEffect(() => guardar(CLAVE_CARRITO, carrito), [carrito]);
   useEffect(() => guardar(CLAVE_SESION, sesion), [sesion]);
+
+  // Modo oscuro: Bootstrap 5.3 cambia todos sus colores con data-bs-theme="dark" en <html>.
+  const [oscuro, setOscuro] = useState(() => leerGuardado(CLAVE_TEMA, 'claro') === 'oscuro');
+  useEffect(() => {
+    document.documentElement.setAttribute('data-bs-theme', oscuro ? 'dark' : 'light');
+    guardar(CLAVE_TEMA, oscuro ? 'oscuro' : 'claro');
+  }, [oscuro]);
 
   // Al cambiar de página: si la dirección trae #ancla, baja hasta esa sección;
   // si no, vuelve arriba (como pasaba al abrir un .html nuevo).
@@ -98,6 +111,8 @@ export default function App() {
         unidades={unidades}
         sesion={sesion}
         onCerrarSesion={() => setSesion(null)}
+        oscuro={oscuro}
+        onAlternarTema={() => setOscuro(!oscuro)}
       />
       <Routes>
         <Route path="/" element={<Inicio />} />
