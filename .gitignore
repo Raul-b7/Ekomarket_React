@@ -1,2 +1,5 @@
 # Vault local (cerebro del proyecto), no se sube al repo
 vault/
+
+# Configuración local de la vista previa
+.claude/
