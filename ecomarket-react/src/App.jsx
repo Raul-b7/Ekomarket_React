@@ -85,6 +85,10 @@ export default function App() {
     setCarrito((anterior) => anterior.filter((item) => item.id !== id));
   }
 
+  function vaciarCarrito() {
+    setCarrito([]);
+  }
+
   // Cantidad total de unidades: es lo que muestra el botón "Carrito (n)".
   const unidades = carrito.reduce((total, item) => total + item.cantidad, 0);
 
@@ -111,6 +115,7 @@ export default function App() {
               carrito={carrito}
               onCambiarCantidad={cambiarCantidad}
               onEliminar={eliminarDelCarrito}
+              onVaciar={vaciarCarrito}
             />
           }
         />
